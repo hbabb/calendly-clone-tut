@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
+import "./src/env/server";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    typedRoutes: true,
+    typedEnv: true,
+  },
 };
 
 export default nextConfig;
