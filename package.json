@@ -14,7 +14,9 @@
     "start": "next start",
     "lint": "biome check src",
     "format": "biome check --write src",
-    "git": "git config --global core.hooksPath .githooks"
+    "git": "git config --global core.hooksPath .githooks",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx ./src/db/migrate.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.5.2",
