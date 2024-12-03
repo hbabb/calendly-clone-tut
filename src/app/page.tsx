@@ -1,9 +1,14 @@
 import { Header } from "@/components/layout/Header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader } from "@/components/ui/card";
-// import { SignInButton } from "@clerk/nextjs";
+import { SignInButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { userId } = await auth();
+  if (userId !== null) redirect("/events");
+
   return (
     <div className="flex h-full flex-col">
       <Header />
@@ -16,7 +21,9 @@ export default function HomePage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col justify-center gap-2">
-            <Button>{/* <SignInButton /> */}Sign In</Button>
+            <Button asChild>
+              <SignInButton />
+            </Button>
             <Button>Sign Up</Button>
           </CardContent>
           <CardFooter>
