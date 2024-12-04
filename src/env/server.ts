@@ -12,6 +12,9 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]),
     CLERK_SECRET_KEY: z.string().min(1),
     DATABASE_URL: z.string().url(),
+    // GOOGLE_OAUTH_CLIENT_ID: z.string().min(1),
+    // GOOGLE_OAUTH_CLIENT_SECRET: z.string().min(1),
+    // GOOGLE_OAUTH_REDIRECT_URL: z.string().min(1),
   },
   onValidationError: (error: ZodError) => {
     console.error("❌ Invalid environment variables:", error.message);
